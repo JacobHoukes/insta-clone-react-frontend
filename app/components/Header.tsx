@@ -1,23 +1,10 @@
-import type { FC } from "react";
-
-const Header: FC = () => {
+export function Header() {
   return (
-    <header className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-black/80 backdrop-blur">
-      <div className="flex items-center gap-2">
-        <span className="text-lg font-semibold">jacob_insta_clone</span>
-      </div>
-
-      <div className="flex items-center gap-4 text-xl">
-        <button aria-label="Create">
-          ＋
-        </button>
-        <button aria-label="Messages">
-          💬
-        </button>
-      </div>
+    <header className="sticky top-0 z-50 w-full border-b bg-white">
+      <nav className="container mx-auto flex items-center justify-between px-4 py-3">
+        <h1 className="text-xl font-bold">Instagram</h1>
+        <div className="text-xl">❤️</div>
+      </nav>
     </header>
   );
-};
-
-export { Header };
-
+}

@@ -1,42 +1,37 @@
-import type { FC } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from 'react-router';
 
-const BottomNav: FC = () => {
-  const baseClass = "flex flex-col items-center text-xs";
-  const activeClass = "text-white";
-  const inactiveClass = "text-neutral-500";
-
+export function BottomNav() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 border-t border-neutral-800 bg-black/90 backdrop-blur px-6 py-2">
-      <div className="flex justify-between">
-        <NavLink
-          to="/profile/posts/grid"
-          className={({ isActive }) =>
-            `${baseClass} ${isActive ? activeClass : inactiveClass}`
-          }
+    <footer className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t">
+      <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
+        <Link
+          to="/home"
+          className="inline-flex flex-col items-center justify-center px-5"
         >
-          <span>🏠</span>
-          <span>Posts</span>
-        </NavLink>
-
-        <NavLink
-          to="/profile/reels/grid"
-          className={({ isActive }) =>
-            `${baseClass} ${isActive ? activeClass : inactiveClass}`
-          }
+          🏠
+        </Link>
+        <div className="inline-flex flex-col items-center justify-center px-5">
+          🔍
+        </div>
+        <Link
+          to="/home"
+          className="inline-flex flex-col items-center justify-center px-5"
         >
-          <span>🎞️</span>
-          <span>Reels</span>
-        </NavLink>
-
-        <Link to="/profile" className={`${baseClass} ${inactiveClass}`}>
-          <span>👤</span>
-          <span>Profile</span>
+          ➕
+        </Link>
+        <Link
+          to="/"
+          className="inline-flex flex-col items-center justify-center px-5"
+        >
+          Reels
+        </Link>
+        <Link
+          to="/profile"
+          className="inline-flex flex-col items-center justify-center px-5"
+        >
+          👤
         </Link>
       </div>
-    </nav>
+    </footer>
   );
-};
-
-export { BottomNav };
-
+}
