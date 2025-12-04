@@ -23,9 +23,9 @@ export default function HighlightDetail() {
   const highlight = useLoaderData() as Highlight;
 
   return (
-    <div>
-      <h1>{highlight.title}</h1>
-      {/* Render your <HighlightStory /> component here */}
+    <div className="p-4">
+      <h1 className="text-lg font-semibold mb-4">{highlight.title}</h1>
+      <HighlightStory highlight={highlight} />
     </div>
   );
 }
