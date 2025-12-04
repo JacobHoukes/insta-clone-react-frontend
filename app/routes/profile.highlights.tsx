@@ -8,7 +8,7 @@ import { HighlightBubble } from '~/components/HighlightBubble';
 
 export async function loader() {
   try {
-    const response = await api.get('/highlights');
+    const response = await api.get('/highlights/grid');
     return highlightListSchema.parse(response.data);
   } catch (error) {
     console.error('Failed to load highlights:', error);
