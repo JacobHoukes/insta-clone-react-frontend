@@ -1,6 +1,7 @@
 import type { Post } from '~/schemas/post.schema';
+import type { Tagged } from '~/schemas/tagged.schema';
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({ post }: { post: Post | Tagged }) {
   return (
     <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden border bg-white mb-6">
       <div className="p-4">
