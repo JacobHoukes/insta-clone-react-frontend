@@ -1,18 +1,18 @@
-import { useLoaderData, type LoaderFunctionArgs } from 'react-router';
+import { highlightSchema, type Highlight } from '~/schemas/highlight.schema';
+import { HighlightStory } from '~/components/HighlightStory';
 import { api } from '~/services/api';
-// Assume you have a highlight schema and a HighlightStory component
-// import { highlightSchema, type Highlight } from "~/schemas/highlight.schema";
-// import { HighlightStory } from "~/components/HighlightStory";
+import { useLoaderData, type LoaderFunctionArgs } from 'react-router';
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  // The `params` object contains the dynamic parts of the URL.
-  // The key (`id`) matches the filename (`$id.tsx`).
   const highlightId = params.id;
+
+  if (!highlightId) {
+    throw new Response('Highlight ID is required', { status: 400 });
+  }
 
   try {
     const response = await api.get(`/highlights/${highlightId}`);
-    // return highlightSchema.parse(response.data);
-    return response.data; // Replace with schema parsing
+    return highlightSchema.parse(response.data);
   } catch (error) {
     console.error(error);
     throw new Response('Highlight not found', { status: 404 });
@@ -20,8 +20,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function HighlightDetail() {
-  const highlight = useLoaderData();
-  // Add a typeguard to help typescript understand what the higlhight is if needed
+  const highlight = useLoaderData() as Highlight;
 
   return (
     <div>
