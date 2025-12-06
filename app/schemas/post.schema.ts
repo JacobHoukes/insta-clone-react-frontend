@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const postSchema = z.object({
   id: z.number(),
-  img_url: z.string().url(),
+  img_url: z.string().min(1, 'Image URL is required.'),
   caption: z.string().nullable(),
   created_at: z.string(),
 });
