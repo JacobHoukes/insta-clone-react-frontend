@@ -1,14 +1,16 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL,
 });
 
 export const getImageUrl = (path: string): string => {
   if (path.startsWith('http')) {
-    return path; // full url
+    return path;
   }
-  return `http://localhost:3000${path}`; // prepend backend url
+  return `${baseURL}${path}`;
 };
 
 export { api };
